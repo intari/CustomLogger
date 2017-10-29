@@ -14,10 +14,6 @@ public class CustomLog {
     public static final String TAG = CustomLog.class.getSimpleName();
     public static final String NOTAG = "NoTag";
 
-    //where to find NSLogger, development use only
-    private static final String LOG_HOST="tau-remote-logs.viorsan.com";//TODO:make it neutral!
-    private static final int LOG_PORT=50001;
-
     private static String logHost=null;
     private static int logPort = 0;
     private static boolean isDebug=false;
@@ -58,14 +54,14 @@ public class CustomLog {
     public static void setContext(Context context) {
         if (isDebug) {
             Debug.setup(context,true,false);//logging, no flushing
-            Debug.L.setRemoteHost(LOG_HOST, LOG_PORT, true);
-            Debug.L.LOG_MARK("Logger startup (debug). Will use "+LOG_HOST+":"+LOG_PORT);
+            Debug.L.setRemoteHost(logHost, logPort, true);
+            Debug.L.LOG_MARK("Logger startup (debug). Will use "+logHost+":"+logPort);
             logCrashlytics=false;//don't sent logs to crashlytics (especially crash logs, no need and I will get them anyway)
         }
         else {
             Debug.setup(context,true,false);//no logging, no flushing
-            Debug.L.setRemoteHost(LOG_HOST, LOG_PORT, true);
-            Debug.L.LOG_MARK("Logger startup (not debug). Will use "+LOG_HOST+":"+LOG_PORT);
+            Debug.L.setRemoteHost(logHost, logPort, true);
+            Debug.L.LOG_MARK("Logger startup (not debug). Will use "+logHost+":"+logPort);
         }
     }
 
