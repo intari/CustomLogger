@@ -24,10 +24,15 @@ dependencies {
 
 Call
 ```java
+ import net.intari.CustomLogger.CustomLog;
+...
  CustomLog.setIsDebug(BuildConfig.DEBUG);//do we also need logcat?
  CustomLog.setLogDestination(LOG_HOST,LOG_PORT);//host where NSLogger is running
  CustomLog.setContext(this); // use app's context
 
+ ..
+ CustomLog.v(TAG,"Message");
+ CustomLog.logException(ex);
 ```
 
 Client app - get it from https://github.com/fpillet/NSLogger

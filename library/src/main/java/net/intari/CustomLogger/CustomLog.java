@@ -36,6 +36,12 @@ public class CustomLog {
         //Crashlytics.setUserIdentifier(userIdentifier);
     }
 
+    /**
+     * Where NSLogger.app is running
+     * @param newLogHost hostname like host.domain.com
+     * @param newLogPort port number
+     * @return false if this function was arleady called
+     */
     public static boolean setLogDestination(String newLogHost,int newLogPort) {
         if (logHost==null) {
             logHost=newLogHost;
@@ -46,9 +52,19 @@ public class CustomLog {
             return false;
         }
     }
+
+    /**
+     * Are should we use extra debugging features (like dump to logcat)
+     * @param newIsDebug
+     */
     public static void setIsDebug(boolean newIsDebug) {
         isDebug=newIsDebug;
     }
+
+    /**
+     * Is it ok to use Crashlytics? (not currently used)
+     * @param newIsLogCrashlytics
+     */
     public static void setLogCrashlytics(boolean newIsLogCrashlytics) {
         logCrashlytics=newIsLogCrashlytics;
     }
