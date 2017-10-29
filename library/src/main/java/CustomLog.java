@@ -52,6 +52,9 @@ public class CustomLog {
     public static void setIsDebug(boolean newIsDebug) {
         isDebug=newIsDebug;
     }
+    public static void setLogCrashlytics(boolean newIsLogCrashlytics) {
+        logCrashlytics=newIsLogCrashlytics;
+    }
     public static void setContext(Context context) {
         if (isDebug) {
             Debug.setup(context,true,false);//logging, no flushing
