@@ -1,7 +1,7 @@
 # CustomLogger
 CustomLogger wrapper library for NSLogger
 
-[![Release](https://jitpack.io/v/intari/CustomLogger.svg)](https://jitpack.io/#intari/CustomLogger)
+[![Release](https://jitpack.io/v/net.intari/CustomLogger.svg)](https://jitpack.io/#net.intari/CustomLogger)
 
 Usage:
 
@@ -17,7 +17,7 @@ and:
 
 ```gradle
 dependencies {
-    compile 'com.github.intari:CustomLogger:{latest version}'
+    compile 'net.intari:CustomLogger:{latest version}'
 }
 ```
 
