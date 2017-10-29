@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven' // ADD THIS
 
-group='com.github.intari'
+group='com.viorsan'
 
 android {
     compileSdkVersion 26
