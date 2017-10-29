@@ -1,4 +1,5 @@
-package com.viorsan.CustomLogger;/*
+package net.intari.CustomLogger;
+/*
   Originally part of NSLogger example code at https://github.com/fpillet/NSLogger/tree/master/Client%20Logger/Android
   Modified by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com
  */

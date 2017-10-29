@@ -1,5 +1,7 @@
-package com.viorsan.CustomLogger;/*
- * com.viorsan.net.intari.CustomLogger.NSLoggerClient.java
+package net.intari.CustomLogger;
+
+/*
+ * net.intari.CustomLogger.NSLoggerClient.java
  *
  * Android version 1.0.1 2015-04-15
  *
@@ -62,15 +64,15 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.LogRecord;
 
 /**
- * com.viorsan.net.intari.CustomLogger.NSLoggerClient maintain one connection to the remote NSLogger desktop viewer (or log to a log file)
- * You can use multiple com.viorsan.net.intari.CustomLogger.NSLoggerClient instances if you need to, this will open multiple windows
+ * NSLoggerClient maintain one connection to the remote NSLogger desktop viewer (or log to a log file)
+ * You can use multiple .NSLoggerClient instances if you need to, this will open multiple windows
  * in the desktop viewer.
  *
  * Your application's AndroidManifest.xml needs to make use of the following permission:
  *
  * <uses-permission android:name="android.permission.INTERNET" />
  *
- * In addition, if you are going to use com.viorsan.net.intari.CustomLogger.NSLoggerClient with Bonjour to automatically locate the desktop viewer
+ * In addition, if you are going to use NSLoggerClient with Bonjour to automatically locate the desktop viewer
  * (this is the default), make sure your application's AndroidManifest.xml uses the following permissions:
  *
  * <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
@@ -121,7 +123,7 @@ public class NSLoggerClient
 	protected static Charset stringsCharset = Charset.forName("utf-8");
 
 	/**
-	 * Create a new com.viorsan.net.intari.CustomLogger.NSLoggerClient instance. Multiple instances will create multiple log windows on
+	 * Create a new NSLoggerClient instance. Multiple instances will create multiple log windows on
 	 * the desktop viewer, or you can have instances that log to a file and others that
 	 * log to the desktop viewer. Typically, you will use only one instance.
 	 * Default options are to lookup for a desktop viewer on Bonjour, and use SSL
@@ -130,7 +132,7 @@ public class NSLoggerClient
 	public NSLoggerClient(Context ctx)
 	{
 		if (DEBUG_LOGGER)
-			Log.i("NSLogger", "com.viorsan.net.intari.CustomLogger.NSLoggerClient created");
+			Log.i("NSLogger", "NSLoggerClient created");
 		currentContext = ctx.getApplicationContext();
 
 		// create the multicast lock (for Bonjour) if needed, otherwise the WiFi adapter

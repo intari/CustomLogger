@@ -1,4 +1,4 @@
-package com.viorsan.CustomLogger;
+package net.intari.CustomLogger;
 
 import android.content.Context;
 import android.util.Log;
@@ -42,7 +42,7 @@ public class CustomLog {
             logPort=newLogPort;
             return true;
         } else {
-            Log.w(TAG,"com.viorsan.net.intari.CustomLogger.Debug logger arleady initialized with  "+logHost+":"+logPort+", ignoring attempt to initialize with "+newLogHost+":"+newLogPort);
+            Log.w(TAG,"Debug logger arleady initialized with  "+logHost+":"+logPort+", ignoring attempt to initialize with "+newLogHost+":"+newLogPort);
             return false;
         }
     }
