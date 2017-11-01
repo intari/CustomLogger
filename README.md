@@ -3,6 +3,8 @@ CustomLogger wrapper library for NSLogger
 
 [![Release](https://jitpack.io/v/net.intari/CustomLogger.svg)](https://jitpack.io/#net.intari/CustomLogger)
 
+<a href='https://travis-ci.org/intari/CustomLogger/builds'><img src='https://api.travis-ci.org/intari/CustomLogger.svg?branch=master'></a>
+
 Usage:
 
 Add it to your build.gradle with:

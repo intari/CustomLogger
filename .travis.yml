@@ -1,0 +1,52 @@
+#http://docs.travis-ci.com/user/languages/android/
+
+language: android
+jdk: oraclejdk8
+
+
+# I want faster builds of course, http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
+sudo: false
+        
+# disable notifications via e-mail http://docs.travis-ci.com/user/notifications/
+notifications:
+  email: false
+  
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    - platform-tools
+    - tools
+
+    # The BuildTools version used by your project
+    - build-tools-26.0.2
+    - android-25
+licenses:
+    - android-sdk-license-.+
+    - '.+'
+    
+    
+before_install:
+  # for gradle output style
+  - export TERM=dumb
+  # environment info
+  # - sudo chmod +x gradlew
+  - ./gradlew -v
+  - uname -a
+  - echo "Android Home:$ANDROID_HOME"
+  # manually set sdk.dir variable, according to local paths
+  - echo "sdk.dir=$ANDROID_HOME" > local.properties
+  - echo "Local Properties file is "
+  - cat local.properties
+  # manually accept licenses https://github.com/travis-ci/travis-ci/issues/6555
+  # https://stackoverflow.com/questions/42731625/travis-ci-failed-because-cannot-accept-license-constrain-layout/42736695#42736695
+  - echo yes | sdkmanager tools
+  # Check components status
+  - sdkmanager --list || true
+  
+script:
+    - ./gradlew clean install
+    
+#after_success:
+#  - bash <(curl -s https://codecov.io/bash)
+  
