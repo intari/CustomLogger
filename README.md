@@ -1,9 +1,16 @@
 # CustomLogger
 CustomLogger wrapper library for NSLogger
 
+[![GitHub license](https://img.shields.io/github/license/intari/CustomLogger.svg)](https://github.com/intari/CustomLogger/blob/master/LICENSE)
+
 [![Release](https://jitpack.io/v/net.intari/CustomLogger.svg)](https://jitpack.io/#net.intari/CustomLogger)
 
 <a href='https://travis-ci.org/intari/CustomLogger/builds'><img src='https://api.travis-ci.org/intari/CustomLogger.svg?branch=master'></a>
+
+[![GitHub issues](https://img.shields.io/github/issues/intari/CustomLogger.svg)](https://github.com/intari/CustomLogger/issues)
+[![GitHub forks](https://img.shields.io/github/forks/intari/CustomLogger.svg)](https://github.com/intari/CustomLogger/network)
+[![GitHub stars](https://img.shields.io/github/stars/intari/CustomLogger.svg)](https://github.com/intari/CustomLogger/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/intari/CustomLogger.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fintari%2FCustomLogger)
 
 Usage:
 
