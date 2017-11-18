@@ -174,6 +174,21 @@ public class CustomLog {
         }
         t.printStackTrace();
     }
+    public static void logException(String tag,Exception ex) {
+        Debug.L.LOG_EXCEPTION(tag,ex);
+        if (logCrashlytics) {
+            //Crashlytics.logException(ex);
+        }
+        ex.printStackTrace();
+    }
+    public static void logException(String tag,Throwable t) {
+        Debug.L.LOG_THROWABLE(tag,t);
+        if (logCrashlytics) {
+            //Crashlytics.logException(t);
+        }
+        t.printStackTrace();
+    }
+
     //Log image@debug level (makes no sense anyway
     public static void image(String tag,byte[] data) {
         Debug.L.taggedLogImageData(Log.DEBUG,tag, data);
