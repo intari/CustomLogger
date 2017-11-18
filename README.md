@@ -38,9 +38,19 @@ Call
  CustomLog.setContext(this); // use app's context
 
  ..
+ CustomLog.e(TAG,"Message");
+ CustomLog.w(TAG,"Message");
+ CustomLog.i(TAG,"Message");
  CustomLog.v(TAG,"Message");
- CustomLog.logException(ex);
+ CustomLog.l(TAG,"Message");
+     
+ CustomLog.logException(ex);//ex is Exception or Throwable
+ CustomLog.logException(TAG,ex);//ex is Exception or Throwable
+ CustomLog.logMark(mark);
+...
+
 ```
 
 Client app - get it from https://github.com/fpillet/NSLogger
 
+See AndroidToolbox for Kotlin Extensions
