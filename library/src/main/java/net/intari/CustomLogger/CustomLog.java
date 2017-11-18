@@ -179,5 +179,8 @@ public class CustomLog {
         Debug.L.taggedLogImageData(Log.DEBUG,tag, data);
 
     }
+    public static void logMark(String mark) {
+        Debug.L.LOG_MARK(mark);
+    }
 
 }
