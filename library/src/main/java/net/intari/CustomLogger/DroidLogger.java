@@ -70,6 +70,10 @@ public final class DroidLogger extends NSLoggerClient
 	}
 
 	public void LOG_THROWABLE(Throwable t) {
+		LOG_THROWABLE("throwable",t);
+	}
+
+	public void LOG_THROWABLE(String tag,Throwable t) {
 		if (!loggingEnabled) {
 			return;
 		}
@@ -100,16 +104,20 @@ public final class DroidLogger extends NSLoggerClient
 				sb.append("\n");
 			}
 			final StackTraceElement e = st[0];
-			log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", "throwable", 0, sb.toString());
+			log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", tag, 0, sb.toString());
 		}
 		else
 		{
 			// no stack trace attached to exception (should not happen)
-			taggedLog(0, "throwable", t.toString());
+			taggedLog(0, tag, t.toString());
 		}
 	}
+	public void LOG_EXCEPTION(Exception exc) {
 
-	public void LOG_EXCEPTION(Exception exc)
+		LOG_EXCEPTION("exception",exc);
+	}
+
+	public void LOG_EXCEPTION(String tag,Exception exc)
 	{
         if (!loggingEnabled) {
             return;
@@ -141,12 +149,12 @@ public final class DroidLogger extends NSLoggerClient
 				sb.append("\n");
 			}
 			final StackTraceElement e = st[0];
-			log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", "exception", 0, sb.toString());
+			log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", tag, 0, sb.toString());
 		}
 		else
 		{
 			// no stack trace attached to exception (should not happen)
-			taggedLog(0, "exception", exc.toString());
+			taggedLog(0, tag, exc.toString());
 		}
 	}
 
