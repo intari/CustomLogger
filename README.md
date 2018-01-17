@@ -11,7 +11,6 @@ CustomLogger wrapper library for NSLogger
 [![GitHub stars](https://img.shields.io/github/stars/intari/CustomLogger.svg)](https://github.com/intari/CustomLogger/stargazers)
 [![Github commits (since latest release)](https://img.shields.io/github/commits-since/intari/CustomLogger/latest.svg)](https://github.com/intari/CustomLogger)
 [![Read the Docs](https://img.shields.io/readthedocs/customlogger.svg)](http://customlogger.readthedocs.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 
