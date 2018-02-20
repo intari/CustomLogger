@@ -66,7 +66,7 @@ public class CustomLog {
      * @param key
      * @param value
      */
-    public static void crashlyticsSetBool(String key, boolean value) {
+    public static void setBool(String key, boolean value) {
         if (logCrashlytics) {
             Crashlytics.setBool(key,value);
         }
