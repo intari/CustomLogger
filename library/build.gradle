@@ -15,9 +15,15 @@ android {
         consumerProguardFiles 'proguard-rules.pro'
     }
 }
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 dependencies {
     // add dependencies here
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
+        transitive = true;
+    }
 }
 
 // build a jar with source files

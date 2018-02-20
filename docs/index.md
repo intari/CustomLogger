@@ -39,6 +39,7 @@ Call as:
  import net.intari.CustomLogger.CustomLog;
 ...
  CustomLog.setIsDebug(BuildConfig.DEBUG);//do we also need logcat?
+ CustomLog.setUseCrashlytics(false);//do we need to use Crashlytics (or true if you configured it)
  CustomLog.setLogDestination(LOG_HOST,LOG_PORT);//host where NSLogger is running
  CustomLog.setContext(this); // use app's context
 
@@ -48,6 +49,11 @@ Call as:
  CustomLog.i(TAG,"Message");
  CustomLog.v(TAG,"Message");
  CustomLog.l(TAG,"Message");
+ CustomLog.setUserIdentifier("443r3tfvxLeila#17");
+ CustomLog.setUserEmail("queen@palace.nabu.galaxyfarfaraway");
+ CustomLog.setUserName("Princess Leia");
+ CustomLog.setInt("UserAge",17);
+ CustomLog.setString("Title","Queen of Nabu");
      
  CustomLog.logException(ex);//ex is Exception or Throwable
  CustomLog.logException(TAG,ex);//ex is Exception or Throwable
@@ -58,4 +64,4 @@ Call as:
 
 Client app - get it from https://github.com/fpillet/NSLogger
 
-See AndroidToolbox for Kotlin Extensions
+See AndroidToolboxCore for Kotlin Extensions
