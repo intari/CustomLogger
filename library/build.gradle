@@ -4,8 +4,8 @@ apply plugin: 'com.github.dcendents.android-maven' // ADD THIS
 group='net.intari'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
 
     defaultConfig {
         minSdkVersion 15
