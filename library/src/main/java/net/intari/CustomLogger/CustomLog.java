@@ -189,6 +189,7 @@ public class CustomLog {
     /**
      * Setup necessary context and init connection with NSLogger
      * call all setX before this function
+     * MUST be called before using any function which send data to logger
      * @param context
      */
     public static void setContext(Context context) {

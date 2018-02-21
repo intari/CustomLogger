@@ -41,6 +41,7 @@ Call as:
  CustomLog.setIsDebug(BuildConfig.DEBUG);//do we also need logcat?
  CustomLog.setUseCrashlytics(false);//do we need to use Crashlytics (or true if you configured it)
  CustomLog.setLogDestination(LOG_HOST,LOG_PORT);//host where NSLogger is running
+ //MUST be called before using any function which send data to logger
  CustomLog.setContext(this); // use app's context
 
  ..
