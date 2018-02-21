@@ -38,11 +38,11 @@ Call as:
 ```java
  import net.intari.CustomLogger.CustomLog;
 ...
- CustomLog.setIsDebug(BuildConfig.DEBUG);//do we also need logcat?
- CustomLog.setUseCrashlytics(false);//do we need to use Crashlytics (or true if you configured it)
+ CustomLog.setIsDebug(BuildConfig.DEBUG);//do we also need logcat? not needed if crashlytics connection is active
+ CustomLog.setUseCrashlytics(false);//do we need to use Crashlytics (or true if you configured it). If you don't this - crashlytics connection will not work
  CustomLog.setLogDestination(LOG_HOST,LOG_PORT);//host where NSLogger is running
  //MUST be called before using any function which send data to logger
- CustomLog.setContext(this); // use app's context
+ CustomLog.setContext(this); // use app's context - if you don't do this - NSLogger connection will not work. if IsDebug==true and setContext was not called - it will use logcat only
 
  ..
  CustomLog.e(TAG,"Message");

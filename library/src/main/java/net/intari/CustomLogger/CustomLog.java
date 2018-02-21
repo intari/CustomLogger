@@ -189,7 +189,7 @@ public class CustomLog {
     /**
      * Setup necessary context and init connection with NSLogger
      * call all setX before this function
-     * MUST be called before using any function which send data to logger
+     * If you don't call it - no NSLogger support will be available
      * @param context
      */
     public static void setContext(Context context) {
@@ -211,7 +211,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(msg);
         }
-        Debug.L.LOG_APP(0, msg);
+        if (Debug.L!=null) {
+            Debug.L.LOG_APP(0, msg);
+        }
         if (isDebug) {
             Log.v(NOTAG,msg);
         }
@@ -220,7 +222,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(msg);
         }
-        Debug.L.taggedLog(Log.VERBOSE,tag,msg);
+        if (Debug.L!=null) {
+            Debug.L.taggedLog(Log.VERBOSE, tag, msg);
+        }
         if (isDebug) {
             Log.v(tag,msg);
         }
@@ -230,7 +234,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(Log.VERBOSE, tag, msg);
         }
-        Debug.L.taggedLog(Log.VERBOSE,tag,msg);
+        if (Debug.L!=null) {
+            Debug.L.taggedLog(Log.VERBOSE, tag, msg);
+        }
         if (isDebug) {
             Log.v(tag,msg);
         }
@@ -241,7 +247,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(Log.ERROR, tag, msg);
         }
-        Debug.L.taggedLog(Log.ERROR,tag,msg);
+        if (Debug.L!=null) {
+            Debug.L.taggedLog(Log.ERROR, tag, msg);
+        }
         if (isDebug) {
             Log.e(tag,msg);
         }
@@ -252,7 +260,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(Log.WARN, tag, msg);
         }
-        Debug.L.taggedLog(Log.WARN,tag,msg);
+        if (Debug.L!=null) {
+            Debug.L.taggedLog(Log.WARN, tag, msg);
+        }
         if (isDebug) {
             Log.w(tag,msg);
         }
@@ -263,7 +273,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(Log.INFO, tag, msg);
         }
-        Debug.L.taggedLog(Log.INFO,tag,msg);
+        if (Debug.L!=null) {
+            Debug.L.taggedLog(Log.INFO, tag, msg);
+        }
         if (isDebug) {
             Log.i(tag,msg);
         }
@@ -274,7 +286,9 @@ public class CustomLog {
         if (logCrashlytics) {
             Crashlytics.log(Log.DEBUG, tag, msg);
         }
-        Debug.L.taggedLog(Log.DEBUG,tag,msg);
+        if (Debug.L!=null) {
+            Debug.L.taggedLog(Log.DEBUG, tag, msg);
+        }
         if (isDebug) {
             Log.d(tag,msg);
         }
@@ -283,28 +297,36 @@ public class CustomLog {
 
     //replacement for "ex.printStackTrace" 'handling' of exceptions
     public static void logException(Exception ex) {
-        Debug.L.LOG_EXCEPTION(ex);
+        if (Debug.L!=null) {
+            Debug.L.LOG_EXCEPTION(ex);
+        }
         if (logCrashlytics) {
             Crashlytics.logException(ex);
         }
         ex.printStackTrace();
     }
     public static void logException(Throwable t) {
-        Debug.L.LOG_THROWABLE(t);
+        if (Debug.L!=null) {
+            Debug.L.LOG_THROWABLE(t);
+        }
         if (logCrashlytics) {
             Crashlytics.logException(t);
         }
         t.printStackTrace();
     }
     public static void logException(String tag,Exception ex) {
-        Debug.L.LOG_EXCEPTION(tag,ex);
+        if (Debug.L!=null) {
+            Debug.L.LOG_EXCEPTION(tag,ex);
+        }
         if (logCrashlytics) {
             Crashlytics.logException(ex);
         }
         ex.printStackTrace();
     }
     public static void logException(String tag,Throwable t) {
-        Debug.L.LOG_THROWABLE(tag,t);
+        if (Debug.L!=null) {
+            Debug.L.LOG_THROWABLE(tag,t);
+        }
         if (logCrashlytics) {
             Crashlytics.logException(t);
         }
@@ -313,11 +335,15 @@ public class CustomLog {
 
     //Log image@debug level (makes no sense anyway
     public static void image(String tag,byte[] data) {
-        Debug.L.taggedLogImageData(Log.DEBUG,tag, data);
+        if (Debug.L!=null) {
+            Debug.L.taggedLogImageData(Log.DEBUG,tag, data);
+        }
 
     }
     public static void logMark(String mark) {
-        Debug.L.LOG_MARK(mark);
+        if (Debug.L!=null) {
+            Debug.L.LOG_MARK(mark);
+        }
     }
 
 }
