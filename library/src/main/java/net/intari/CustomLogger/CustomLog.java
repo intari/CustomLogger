@@ -22,6 +22,8 @@ public class CustomLog {
     private static boolean isDebug=false;
 
     private static boolean logCrashlytics=false;
+    private static boolean logExceptions=true;
+
     private CustomLog() {
     }
 
@@ -163,6 +165,15 @@ public class CustomLog {
     }
 
     /**
+     * Should logException actually send logs to Crashlytics even if isLogCrashlytics is true?
+     * Default is true
+     * @param newLog
+     */
+    public static void setLogExceptions(boolean newLog) {
+        logExceptions=newLog;
+    }
+
+    /**
      * Are should we use extra debugging features (like dump to logcat)
      * Use BuildConfig.DEBUG
      * If isDebug is true - logs also sent to logcat
@@ -301,7 +312,9 @@ public class CustomLog {
             Debug.L.LOG_EXCEPTION(ex);
         }
         if (logCrashlytics) {
-            Crashlytics.logException(ex);
+            if (logExceptions) {
+                Crashlytics.logException(ex);
+            }
         }
         ex.printStackTrace();
     }
@@ -310,7 +323,9 @@ public class CustomLog {
             Debug.L.LOG_THROWABLE(t);
         }
         if (logCrashlytics) {
-            Crashlytics.logException(t);
+            if (logExceptions) {
+                Crashlytics.logException(t);
+            }
         }
         t.printStackTrace();
     }
@@ -319,7 +334,9 @@ public class CustomLog {
             Debug.L.LOG_EXCEPTION(tag,ex);
         }
         if (logCrashlytics) {
-            Crashlytics.logException(ex);
+            if (logExceptions) {
+                Crashlytics.logException(ex);
+            }
         }
         ex.printStackTrace();
     }
@@ -328,7 +345,9 @@ public class CustomLog {
             Debug.L.LOG_THROWABLE(tag,t);
         }
         if (logCrashlytics) {
-            Crashlytics.logException(t);
+            if (logExceptions) {
+                Crashlytics.logException(t);
+            }
         }
         t.printStackTrace();
     }
