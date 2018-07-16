@@ -316,7 +316,11 @@ public class CustomLog {
                 Crashlytics.logException(ex);
             }
         }
-        ex.printStackTrace();
+        try {
+            ex.printStackTrace();
+        } catch (StackOverflowError e) {
+            CustomLog.e(TAG,"Failed to print stack trace");
+        }
     }
     public static void logException(Throwable t) {
         if (Debug.L!=null) {
@@ -327,7 +331,11 @@ public class CustomLog {
                 Crashlytics.logException(t);
             }
         }
-        t.printStackTrace();
+        try {
+            t.printStackTrace();
+        } catch (StackOverflowError e) {
+            CustomLog.e(TAG,"Failed to print stack trace");
+        }
     }
     public static void logException(String tag,Exception ex) {
         if (Debug.L!=null) {
@@ -338,7 +346,11 @@ public class CustomLog {
                 Crashlytics.logException(ex);
             }
         }
-        ex.printStackTrace();
+        try {
+            ex.printStackTrace();
+        } catch (StackOverflowError e) {
+            CustomLog.e(TAG,"Failed to print stack trace");
+        }
     }
     public static void logException(String tag,Throwable t) {
         if (Debug.L!=null) {
@@ -349,7 +361,11 @@ public class CustomLog {
                 Crashlytics.logException(t);
             }
         }
-        t.printStackTrace();
+        try {
+            t.printStackTrace();
+        } catch (StackOverflowError e) {
+            CustomLog.e(TAG,"Failed to print stack trace");
+        }
     }
 
     //Log image@debug level (makes no sense anyway
