@@ -317,7 +317,9 @@ public class CustomLog {
             }
         }
         try {
-            ex.printStackTrace();
+            if (isDebug) {
+                ex.printStackTrace();
+            }
         } catch (StackOverflowError e) {
             CustomLog.e(TAG,"Failed to print stack trace");
         }
@@ -332,7 +334,9 @@ public class CustomLog {
             }
         }
         try {
-            t.printStackTrace();
+            if (isDebug) {
+                t.printStackTrace();
+            }
         } catch (StackOverflowError e) {
             CustomLog.e(TAG,"Failed to print stack trace");
         }
@@ -347,7 +351,9 @@ public class CustomLog {
             }
         }
         try {
-            ex.printStackTrace();
+            if (isDebug) {
+                ex.printStackTrace();
+            }
         } catch (StackOverflowError e) {
             CustomLog.e(TAG,"Failed to print stack trace");
         }
@@ -362,7 +368,9 @@ public class CustomLog {
             }
         }
         try {
-            t.printStackTrace();
+            if (isDebug) {
+                t.printStackTrace();
+            }
         } catch (StackOverflowError e) {
             CustomLog.e(TAG,"Failed to print stack trace");
         }
