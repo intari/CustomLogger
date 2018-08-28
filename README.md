@@ -44,11 +44,12 @@ Call
  CustomLog.setContext(this); // use app's context - if you don't do this - NSLogger connection will not work. if IsDebug==true and setContext was not called - it will use logcat only
 
  ..
- CustomLog.e(TAG,"Message");
- CustomLog.w(TAG,"Message");
- CustomLog.i(TAG,"Message");
- CustomLog.v(TAG,"Message");
- CustomLog.l(TAG,"Message");
+ CustomLog.e(TAG,"Message"); //level 0 in NSLogger
+ CustomLog.w(TAG,"Message"); //level 1 in NSLogger
+ CustomLog.i(TAG,"Message"); //level 2 in NSLogger
+ CustomLog.d(TAG,"Message"); //level 3 in NSLogger
+ CustomLog.v(TAG,"Message"); //level 4 in NSLogger
+ CustomLog.l(TAG,"Message"); //level 5 in NSLogger
      
  CustomLog.logException(ex);//ex is Exception or Throwable
  CustomLog.logException(TAG,ex);//ex is Exception or Throwable
@@ -56,6 +57,7 @@ Call
 ...
 
 ```
+ 
 
 Client app - get it from https://github.com/fpillet/NSLogger
 

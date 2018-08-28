@@ -24,6 +24,26 @@ public class CustomLog {
     private static boolean logCrashlytics=false;
     private static boolean logExceptions=true;
 
+    //Log levels (to sync with iOS version and NSLogger)
+    private static final int LOGLEVEL_ERROR=0;         //Error produced. Criticality doesn't matter. It's enough we knew it's error
+    private static final int LOGLEVEL_WARN=1;         // Something strange happens. May lead to error eventuallyy
+    private static final int LOGLEVEL_INFO=2;         // Normal operational information
+    private static final int LOGLEVEL_TRACE=3;        // Internal operations, debugging purposes, aka LOGLEVEL_DEBUG
+    private static final int LOGLEVEL_VERBOSE=4;      // Large amount of information like full dumps
+    private static final int LOGLEVEL_VERY_VERBOSE=5; // Very large amount of information
+
+    /*
+     Android use inverted priority levels.
+     They are good but we are constrained by existing NSLogger.app code and iOS counterpart of this library
+     public static final int VERBOSE = 2;
+     public static final int DEBUG = 3;
+     public static final int INFO = 4;
+     public static final int WARN = 5;
+     public static final int ERROR = 6;
+     public static final int ASSERT = 7;
+     */
+
+
     private CustomLog() {
     }
 
@@ -223,7 +243,7 @@ public class CustomLog {
             Crashlytics.log(msg);
         }
         if (Debug.L!=null) {
-            Debug.L.LOG_APP(0, msg);
+            Debug.L.LOG_APP(LOGLEVEL_VERY_VERBOSE, msg);
         }
         if (isDebug) {
             Log.v(NOTAG,msg);
@@ -234,7 +254,7 @@ public class CustomLog {
             Crashlytics.log(msg);
         }
         if (Debug.L!=null) {
-            Debug.L.taggedLog(Log.VERBOSE, tag, msg);
+            Debug.L.taggedLog(LOGLEVEL_VERY_VERBOSE, tag, msg);
         }
         if (isDebug) {
             Log.v(tag,msg);
@@ -246,7 +266,7 @@ public class CustomLog {
             Crashlytics.log(Log.VERBOSE, tag, msg);
         }
         if (Debug.L!=null) {
-            Debug.L.taggedLog(Log.VERBOSE, tag, msg);
+            Debug.L.taggedLog(LOGLEVEL_VERBOSE, tag, msg);
         }
         if (isDebug) {
             Log.v(tag,msg);
@@ -259,7 +279,7 @@ public class CustomLog {
             Crashlytics.log(Log.ERROR, tag, msg);
         }
         if (Debug.L!=null) {
-            Debug.L.taggedLog(Log.ERROR, tag, msg);
+            Debug.L.taggedLog(LOGLEVEL_ERROR, tag, msg);
         }
         if (isDebug) {
             Log.e(tag,msg);
@@ -272,7 +292,7 @@ public class CustomLog {
             Crashlytics.log(Log.WARN, tag, msg);
         }
         if (Debug.L!=null) {
-            Debug.L.taggedLog(Log.WARN, tag, msg);
+            Debug.L.taggedLog(LOGLEVEL_WARN, tag, msg);
         }
         if (isDebug) {
             Log.w(tag,msg);
@@ -285,7 +305,7 @@ public class CustomLog {
             Crashlytics.log(Log.INFO, tag, msg);
         }
         if (Debug.L!=null) {
-            Debug.L.taggedLog(Log.INFO, tag, msg);
+            Debug.L.taggedLog(LOGLEVEL_INFO, tag, msg);
         }
         if (isDebug) {
             Log.i(tag,msg);
@@ -298,7 +318,7 @@ public class CustomLog {
             Crashlytics.log(Log.DEBUG, tag, msg);
         }
         if (Debug.L!=null) {
-            Debug.L.taggedLog(Log.DEBUG, tag, msg);
+            Debug.L.taggedLog(LOGLEVEL_TRACE, tag, msg);
         }
         if (isDebug) {
             Log.d(tag,msg);
@@ -379,7 +399,7 @@ public class CustomLog {
     //Log image@debug level (makes no sense anyway
     public static void image(String tag,byte[] data) {
         if (Debug.L!=null) {
-            Debug.L.taggedLogImageData(Log.DEBUG,tag, data);
+            Debug.L.taggedLogImageData(LOGLEVEL_INFO,tag, data);
         }
 
     }
