@@ -28,9 +28,13 @@ public final class DroidLogger extends NSLoggerClient
 			// log with originating source code info
 			final StackTraceElement e = st[4];
             //use originating info in same way iOS version use. it looks like first 3 params doesn't matter at all. dkzm
-            String stringOriginating=String.format("%s [Line %d] %s.%s() %s",e.getFileName(),e.getLineNumber(),e.getClassName(),e.getMethodName(),message);
+			//they DO matter. 'f' mode in NSLogger!!
+            //String stringOriginating=String.format("%s [Line %d] %s.%s() %s",e.getFileName(),e.getLineNumber(),e.getClassName(),e.getMethodName(),message);
+			//log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", tag, level, stringOriginating);
+			log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", tag, level, message);
 
-			log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", tag, level, stringOriginating);
+
+
 		}
 		else
 		{
