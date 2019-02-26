@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 
 /**
  * (c) Dmitriy Kazimirov, 2015-2018, e-mail:dmitriy.kazimirov@viorsan.com
@@ -24,6 +26,11 @@ public class CustomLog {
     private static boolean logCrashlytics=false;
     private static boolean logExceptions=true;
 
+    private static boolean automaticUnescape=false;
+
+    public static String unescapeString(String source) {
+        return StringEscapeUtils.unescapeJava(source);
+    }
     //Log levels (to sync with iOS version and NSLogger)
     private static final int LOGLEVEL_ERROR=0;         //Error produced. Criticality doesn't matter. It's enough we knew it's error
     private static final int LOGLEVEL_WARN=1;         // Something strange happens. May lead to error eventuallyy
@@ -184,6 +191,15 @@ public class CustomLog {
         }
     }
 
+
+    /**
+     * Should unicode escapes uXXX be automatically converted to real unicode chars
+     * False by default (was false in previous versions)
+     * @param unescape
+     */
+    public static void setAutomaticUnescape(boolean unescape) {
+        automaticUnescape=unescape;
+    }
     /**
      * Should logException actually send logs to Crashlytics even if isLogCrashlytics is true?
      * Default is true
@@ -239,6 +255,9 @@ public class CustomLog {
 
     //just log message
     public static void l(String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(msg);
         }
@@ -250,6 +269,9 @@ public class CustomLog {
         }
     }
     public static void l(String tag,String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(msg);
         }
@@ -262,6 +284,9 @@ public class CustomLog {
     }
     //replacement for Log.v
     public static int v(String tag, String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(Log.VERBOSE, tag, msg);
         }
@@ -275,6 +300,9 @@ public class CustomLog {
     }
     //replacement for Log.e
     public static int e(String tag, String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(Log.ERROR, tag, msg);
         }
@@ -288,6 +316,9 @@ public class CustomLog {
     }
     //replacement for Log.w
     public static int w(String tag, String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(Log.WARN, tag, msg);
         }
@@ -301,6 +332,9 @@ public class CustomLog {
     }
     //replacement for Log.i
     public static int i(String tag, String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(Log.INFO, tag, msg);
         }
@@ -314,6 +348,9 @@ public class CustomLog {
     }
     //replacement for Log.d
     public static int d(String tag, String msg) {
+        if (automaticUnescape) {
+            msg=unescapeString(msg);
+        }
         if (logCrashlytics) {
             Crashlytics.log(Log.DEBUG, tag, msg);
         }
