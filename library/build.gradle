@@ -15,14 +15,17 @@ android {
     }
 }
 repositories {
-    maven { url 'https://maven.fabric.io/public' }
+    // Add Google's Maven repository (if it's not there already).
+    google()
 }
 
 dependencies {
-    // add dependencies here
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
-        transitive = true;
-    }
+
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0'
+
+    // Recommended: Add the Google Analytics SDK.
+    implementation 'com.google.firebase:firebase-analytics:17.4.1'
 
     implementation group: 'org.apache.commons', name: 'commons-text', version: '1.6'
 

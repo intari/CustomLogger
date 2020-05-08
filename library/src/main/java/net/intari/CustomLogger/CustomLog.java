@@ -3,7 +3,9 @@ package net.intari.CustomLogger;
 import android.content.Context;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+
+import com.google.firebase.crashlytics.internal.common.CrashlyticsCore;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -18,6 +20,9 @@ import org.apache.commons.text.StringEscapeUtils;
 public class CustomLog {
     public static final String TAG = CustomLog.class.getSimpleName();
     public static final String NOTAG = "NoTag";
+
+    private static final String USER_EMAIL_KEY="user_email";
+    private static final String USER_NAME_KEY="user_name";
 
     private static String logHost=null;
     private static int logPort = 0;
@@ -60,7 +65,8 @@ public class CustomLog {
      */
     public static void setUserEmail(String userEmail) {
         if (logCrashlytics) {
-            Crashlytics.setUserEmail(userEmail);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(USER_EMAIL_KEY,userEmail);
         }
         v(TAG,"Setting user e-mail to "+userEmail);
     }
@@ -71,7 +77,8 @@ public class CustomLog {
      */
     public static void setUserName(String userName) {
         if (logCrashlytics) {
-            Crashlytics.setUserName(userName);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(USER_NAME_KEY,userName);
         }
         v(TAG,"Setting user name to "+userName);
     }
@@ -82,7 +89,8 @@ public class CustomLog {
      */
     public static void setUserIdentifier(String userIdentifier) {
         if (logCrashlytics) {
-            Crashlytics.setUserIdentifier(userIdentifier);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setUserId(userIdentifier);
         }
         v(TAG,"Setting user identifier to "+userIdentifier);
 
@@ -97,7 +105,8 @@ public class CustomLog {
      */
     public static void setBool(String key, boolean value) {
         if (logCrashlytics) {
-            Crashlytics.setBool(key,value);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(key,value);
         }
         v(TAG,"Setting "+key+" to "+value);
     }
@@ -111,7 +120,8 @@ public class CustomLog {
      */
     public static void setDouble(String key, double value) {
         if (logCrashlytics) {
-            Crashlytics.setDouble(key,value);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(key,value);
         }
         v(TAG,"Setting "+key+" to "+value);
     }
@@ -125,7 +135,8 @@ public class CustomLog {
      */
     public static void setFloat(String key, float value) {
         if (logCrashlytics) {
-            Crashlytics.setFloat(key,value);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(key,value);
         }
         v(TAG,"Setting "+key+" to "+value);
     }
@@ -139,7 +150,8 @@ public class CustomLog {
      */
     public static void setInt(String key, int value) {
         if (logCrashlytics) {
-            Crashlytics.setInt(key,value);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(key,value);
         }
         v(TAG,"Setting "+key+" to "+value);
 
@@ -152,7 +164,8 @@ public class CustomLog {
      */
     public static void setLong(String key, long value) {
         if (logCrashlytics) {
-            Crashlytics.setLong(key,value);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(key,value);
         }
         v(TAG,"Setting "+key+" to "+value);
 
@@ -164,7 +177,8 @@ public class CustomLog {
      */
     public static void setString(String key, String value) {
         if (logCrashlytics) {
-            Crashlytics.setString(key,value);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.setCustomKey(key,value);
         }
         v(TAG,"Setting "+key+" to "+value);
 
@@ -259,7 +273,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log(msg);
         }
         if (Debug.L!=null) {
             Debug.L.LOG_APP(LOGLEVEL_VERY_VERBOSE, msg);
@@ -273,7 +288,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log(msg);
         }
         if (Debug.L!=null) {
             Debug.L.taggedLog(LOGLEVEL_VERY_VERBOSE, tag, msg);
@@ -288,7 +304,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(Log.VERBOSE, tag, msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log("Verbose:"+tag+":"+msg);
         }
         if (Debug.L!=null) {
             Debug.L.taggedLog(LOGLEVEL_VERBOSE, tag, msg);
@@ -304,7 +321,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(Log.ERROR, tag, msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log("Error:"+tag+":"+msg);
         }
         if (Debug.L!=null) {
             Debug.L.taggedLog(LOGLEVEL_ERROR, tag, msg);
@@ -320,7 +338,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(Log.WARN, tag, msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log("Warn:"+tag+":"+msg);
         }
         if (Debug.L!=null) {
             Debug.L.taggedLog(LOGLEVEL_WARN, tag, msg);
@@ -336,7 +355,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(Log.INFO, tag, msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log("Info:"+tag+":"+msg);
         }
         if (Debug.L!=null) {
             Debug.L.taggedLog(LOGLEVEL_INFO, tag, msg);
@@ -352,7 +372,8 @@ public class CustomLog {
             msg=unescapeString(msg);
         }
         if (logCrashlytics) {
-            Crashlytics.log(Log.DEBUG, tag, msg);
+            FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+            crashlytics.log("Debug:"+tag+":"+msg);
         }
         if (Debug.L!=null) {
             Debug.L.taggedLog(LOGLEVEL_TRACE, tag, msg);
@@ -370,7 +391,8 @@ public class CustomLog {
         }
         if (logCrashlytics) {
             if (logExceptions) {
-                Crashlytics.logException(ex);
+                FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+                crashlytics.recordException(ex);
             }
         }
         try {
@@ -387,7 +409,8 @@ public class CustomLog {
         }
         if (logCrashlytics) {
             if (logExceptions) {
-                Crashlytics.logException(t);
+                FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+                crashlytics.recordException(t);
             }
         }
         try {
@@ -404,7 +427,8 @@ public class CustomLog {
         }
         if (logCrashlytics) {
             if (logExceptions) {
-                Crashlytics.logException(ex);
+                FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+                crashlytics.recordException(ex);
             }
         }
         try {
@@ -421,7 +445,8 @@ public class CustomLog {
         }
         if (logCrashlytics) {
             if (logExceptions) {
-                Crashlytics.logException(t);
+                FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+                crashlytics.recordException(t);
             }
         }
         try {
